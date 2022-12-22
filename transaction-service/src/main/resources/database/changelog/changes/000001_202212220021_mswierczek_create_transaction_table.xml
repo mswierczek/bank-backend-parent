@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="000001_202212220021_mswierczek_create_transaction_table" author="mswierczek">
+        <createTable tableName="transaction">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="transaction_id_pk" nullable="false" />
+            </column>
+            <column name="iban" type="varchar(40)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="operation_type" type="varchar(40)" />
+            <column name="balance_before" type="decimal(32,2)" />
+            <column name="balance_after" type="decimal(32,2)" />
+            <column name="timestamp" type="timestamp" />
+        </createTable>
+        <addAutoIncrement tableName="transaction" columnName="id" columnDataType="bigint" startWith="1"/>
+    </changeSet>
+</databaseChangeLog>
